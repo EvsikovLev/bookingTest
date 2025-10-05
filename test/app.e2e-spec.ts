@@ -27,15 +27,10 @@ describe('Booking (e2e)', () => {
 
   async function clearAllTables(): Promise<void> {
     const entities = [BookingEntity, UserEntity, EventEntity];
-    const deletePromises: Array<any> = [];
 
     for (const entity of entities) {
-      deletePromises.push(
-        dataSource.createQueryBuilder().delete().from(entity).execute(),
-      );
+      await dataSource.createQueryBuilder().delete().from(entity).execute();
     }
-
-    await Promise.all(deletePromises);
   }
 
   beforeAll(async () => {
