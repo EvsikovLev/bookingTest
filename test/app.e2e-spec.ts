@@ -31,12 +31,7 @@ describe('Booking (e2e)', () => {
 
     for (const entity of entities) {
       deletePromises.push(
-        dataSource
-          .createQueryBuilder()
-          .delete()
-          .from(entity)
-          .where('id IS NOT NULL')
-          .execute(),
+        dataSource.createQueryBuilder().delete().from(entity).execute(),
       );
     }
 
