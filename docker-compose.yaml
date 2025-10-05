@@ -1,0 +1,16 @@
+services:
+  db:
+    image: postgres:alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: username
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: database
+    networks:
+      - common
+    ports:
+      - "5432:5432"
+
+networks:
+  common:
+    driver: bridge
